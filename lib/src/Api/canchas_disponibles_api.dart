@@ -141,11 +141,11 @@ class CanchasDisponiblesApi {
 
                     DateTime fechaInicioPromo = DateTime.parse(promoInicio);
                     fechaInicioPromo.add(
-                      new Duration(days: 1),
+                       const Duration(days: 1),
                     );
                     DateTime fechaFinPromo = DateTime.parse(promoFin);
                     fechaFinPromo.add(
-                      new Duration(days: 1),
+                       const Duration(days: 1),
                     );
 
                     DateTime fechaActualEnDate = DateTime.parse('$fecha $horaParse:01:00');
@@ -169,7 +169,7 @@ class CanchasDisponiblesApi {
               }
 
               canchasDisponiblesConEmpresas.canchasList = list;
-              if (list.length > 0) {
+              if (list.isNotEmpty) {
                 listEmpresas.add(canchasDisponiblesConEmpresas);
               }
             }
@@ -204,7 +204,9 @@ class CanchasDisponiblesApi {
         return [];
       }
     } catch (error, stacktrace) {
-      print("Exception occured: $error stackTrace: $stacktrace");
+      if (kDebugMode) {
+        print("Exception occured: $error stackTrace: $stacktrace");
+      }
       return [];
     }
   }
@@ -312,9 +314,9 @@ class CanchasDisponiblesApi {
                 }
 
                 DateTime fechaInicioPromo = DateTime.parse(promoInicio);
-                fechaInicioPromo.add(new Duration(days: 1));
+                fechaInicioPromo.add(const  Duration(days: 1));
                 DateTime fechaFinPromo = DateTime.parse(promoFin);
-                fechaFinPromo.add(new Duration(days: 1));
+                fechaFinPromo.add(const Duration(days: 1));
 
                 DateTime fechaActualEnDate = DateTime.parse('$fecha $horaParse:01:00');
 
@@ -473,9 +475,9 @@ class CanchasDisponiblesApi {
                 }
 
                 DateTime fechaInicioPromo = DateTime.parse(promoInicio);
-                fechaInicioPromo.add(new Duration(days: 1));
+                fechaInicioPromo.add(const Duration(days: 1));
                 DateTime fechaFinPromo = DateTime.parse(promoFin);
-                fechaFinPromo.add(new Duration(days: 1));
+                fechaFinPromo.add(const Duration(days: 1));
 
                 DateTime fechaActualEnDate = DateTime.parse('$fecha $horaParse:01:00');
 
@@ -534,7 +536,9 @@ class CanchasDisponiblesApi {
         return [];
       }
     } catch (error, stacktrace) {
-      print("Exception occured: $error stackTrace: $stacktrace");
+      if (kDebugMode) {
+        print("Exception occured: $error stackTrace: $stacktrace");
+      }
       return [];
     }
   }

@@ -94,7 +94,7 @@ class _PorHoraPageState extends State<PorHoraPage> {
             );
           }
         } else {
-          return Center(
+          return const Center(
             child: CargandoWidget(),
           );
         }

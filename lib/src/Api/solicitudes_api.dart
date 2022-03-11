@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:capitan_flutter_web/src/models/solicitudes_model.dart';
 import 'package:capitan_flutter_web/src/utils/constants.dart';
+import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
 
 class SolicitudesApi { 
@@ -83,7 +84,9 @@ class SolicitudesApi {
       return listResult;
     } catch (error, stacktrace) {
       final List<SolicitudesModel> listResult = [];
-      print("Exception occured: $error stackTrace: $stacktrace");
+      if (kDebugMode) {
+        print("Exception occured: $error stackTrace: $stacktrace");
+      }
       return listResult;
     }
   }
@@ -102,7 +105,9 @@ class SolicitudesApi {
       });
 
       final decodedData = json.decode(resp.body);
-      print(decodedData);
+      if (kDebugMode) {
+        print(decodedData);
+      }
 
       if (decodedData.length > 0) {
         for (var i = 0; i < decodedData.length; i++) {
@@ -121,7 +126,9 @@ class SolicitudesApi {
           solicitudesmodel.solicitudComision = decodedData[i]['solicitud_comision'];
           solicitudesmodel.solicitudPagoDatetime = decodedData[i]['solicitud_pago_datetime'];
           solicitudesmodel.solicitudEstado = decodedData[i]['solicitud_estado'];
-          print(solicitudesmodel.solicitudEstado);
+          if (kDebugMode) {
+            print(solicitudesmodel.solicitudEstado);
+          }
           solicitudesmodel.solicitudPagado = decodedData[i]['solicitud_pagado'];
           solicitudesmodel.solicitudObservaciones = decodedData[i]['solicitud_observaciones'];
           solicitudesmodel.solicitudFile = decodedData[i]['solicitud_file'];
@@ -169,7 +176,9 @@ class SolicitudesApi {
       return listResult;
     } catch (error, stacktrace) {
       final List<SolicitudesModel> listResult = [];
-      print("Exception occured: $error stackTrace: $stacktrace");
+      if (kDebugMode) {
+        print("Exception occured: $error stackTrace: $stacktrace");
+      }
       return listResult;
     }
   }
@@ -189,7 +198,9 @@ class SolicitudesApi {
 
       return decodedData;
     } catch (error, stacktrace) {
-      print("Exception occured: $error stackTrace: $stacktrace");
+      if (kDebugMode) {
+        print("Exception occured: $error stackTrace: $stacktrace");
+      }
       return 0;
     }
   }
@@ -209,13 +220,17 @@ class SolicitudesApi {
       });
 
       final decodedData = json.decode(resp.body);
-      print(decodedData);
+      if (kDebugMode) {
+        print(decodedData);
+      }
 
       return decodedData['code'];
 
       //return decodedData;
     } catch (error, stacktrace) {
-      print("Exception occured: $error stackTrace: $stacktrace");
+      if (kDebugMode) {
+        print("Exception occured: $error stackTrace: $stacktrace");
+      }
       return 0;
     }
   }

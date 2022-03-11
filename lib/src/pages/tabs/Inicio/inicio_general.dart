@@ -1,4 +1,6 @@
 import 'package:capitan_flutter_web/src/pages/tabs/Inicio/Inicio/por_hora.dart';
+import 'package:capitan_flutter_web/src/utils/responsive.dart';
+import 'package:extended_image/extended_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -62,7 +64,20 @@ class InicioGeneral extends StatelessWidget {
                             ),
                             height: ScreenUtil().setHeight(220),
                             width: ScreenUtil().setHeight(220),
-                            child: Container(
+                            child: ExtendedImage.network(
+                              'https://capitan.bufeotec.com/media/usuarios/669_26112021163212.jpg',
+                              width: ScreenUtil().setHeight(200),
+                              height: ScreenUtil().setHeight(200),
+                              fit: BoxFit.cover,
+                              cache: true,
+                              //border: Border.all(color: Colors.red, width: 1.0),
+                              //shape: boxShape,
+                              borderRadius: const BorderRadius.all(
+                                Radius.circular(10.0),
+                              ),
+                              //cancelToken: cancellationToken,
+                            ),
+/*  Container(
                               margin: EdgeInsets.symmetric(vertical: ScreenUtil().setHeight(5)),
                               height: ScreenUtil().setHeight(200),
                               width: ScreenUtil().setHeight(200),
@@ -71,8 +86,8 @@ class InicioGeneral extends StatelessWidget {
                                 child: Image.network(
                                   'https://capitan.bufeotec.com/media/usuarios/669_26112021163212.jpg',
                                 ),
-                              ),
-                            ),
+                              ), 
+                            ), */
                           ),
                           Text(
                             '#641',
@@ -285,5 +300,4 @@ class InicioGeneral extends StatelessWidget {
         ],
       ),
     );
-  }
-}
+  }}

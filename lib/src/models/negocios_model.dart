@@ -199,7 +199,7 @@ class Galeria {
     
 
     for (var item in jsonList) {
-      final pelicula = new Galeria.fromJsonMap(item, tipo);
+      final pelicula =  Galeria.fromJsonMap(item, tipo);
       fotos.add(pelicula);
     }
   }

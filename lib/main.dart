@@ -164,6 +164,7 @@ import 'package:capitan_flutter_web/src/bloc/provider_bloc.dart';
 import 'package:capitan_flutter_web/src/pages/home.dart';
 import 'package:capitan_flutter_web/src/pages/login.dart';
 import 'package:capitan_flutter_web/src/pages/splash.dart';
+import 'package:capitan_flutter_web/src/pages/tabs/Solicitudes/bloc_solicitudes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -174,10 +175,12 @@ void main() async {
 
  /*  final prefs = new Preferences();
   await prefs.initPrefs(); */
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -186,9 +189,10 @@ class MyApp extends StatelessWidget {
             ChangeNotifierProvider<IndexBlocListener>(
               create: (_) => IndexBlocListener(),
             ),
-           /*  ChangeNotifierProvider<IndexMesasBlocListener>(
-              create: (_) => IndexMesasBlocListener(),
-            ), */
+            ChangeNotifierProvider<SolicitudBloc>(
+              create: (_) => SolicitudBloc(),
+            ),
+            
           ],
         child: ScreenUtilInit(
               designSize:const  Size(1476.59, 903.5),
@@ -197,7 +201,7 @@ class MyApp extends StatelessWidget {
                 debugShowCheckedModeBanner: false,
                 theme: ThemeData(
                   textTheme: GoogleFonts.poppinsTextTheme(),
-                  primarySwatch: Colors.blue,
+                  primarySwatch: Colors.blue,visualDensity: VisualDensity.adaptivePlatformDensity,
                 ),
                 initialRoute: 'home',
                 routes: {

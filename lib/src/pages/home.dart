@@ -54,7 +54,7 @@ class VistaTablet extends StatelessWidget {
               children: [
                 Container(
                   color: Colors.white,
-                  width: ScreenUtil().setWidth(252),
+                  width: ScreenUtil().setWidth(230),
                   child: const NavBarHead(),
                 ),
                 Expanded(

@@ -4,6 +4,7 @@ import 'package:capitan_flutter_web/src/models/negocios_model.dart';
 import 'package:capitan_flutter_web/src/utils/responsive.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'dart:ui' as ui;
 
 import 'package:intl/intl.dart';
@@ -12,15 +13,18 @@ String obtenerFechaString(String date) {
   final datex = date.split(' ');
   final fechita = datex[0].trim();
 
-  return '$fechita';
+  return fechita;
 }
 
+void showToast2(String texto, Color color) {
+  Fluttertoast.showToast(msg: "$texto", toastLength: Toast.LENGTH_SHORT, timeInSecForIosWeb: 3, backgroundColor: color, textColor: Colors.white);
+}
 String format(double n) {
   return n.toStringAsFixed(n.truncateToDouble() == n ? 2 : 2);
 }
 
 bool validarAperturaDeNegocio(NegociosModelResult negocio) {
-  var now = new DateTime.now();
+  var now =   DateTime.now();
   var horaActual = now.hour;
 
   if (now.weekday == 7) {
@@ -50,7 +54,7 @@ String horaBusqueda(String hora) {
   final horex = hora.split('-');
   final hApertura = horex[0].trim().trim();
 
-  return '$hApertura';
+  return hApertura;
 }
 
 String separadorHora(String hora) {
@@ -69,7 +73,7 @@ int formatHora(String dato) {
 
 
 int obtenerHoraInicio(String fecha, String p) {
-  final horario = fecha.split('$p');
+  final horario = fecha.split(p);
   final hApertura = formatHora(horario[0].trim());
   return hApertura;
 }
@@ -113,24 +117,24 @@ void showdialogSaldo(BuildContext context, Responsive responsive) async {
                 ),
                 Row(
                   children: [
-                    Container(
+                    SizedBox(
                       width: responsive.wp(33),
                       height: responsive.hp(5),
                       child: MaterialButton(
                         color: Colors.red,
-                        child: Text('Atras', style: TextStyle(color: Colors.white)),
+                        child: const Text('Atras', style: TextStyle(color: Colors.white)),
                         onPressed: () {
                           Navigator.pop(context);
                         },
                       ),
                     ),
-                    Spacer(),
-                    Container(
+                    const Spacer(),
+                    SizedBox(
                       width: responsive.wp(33),
                       height: responsive.hp(5),
                       child: MaterialButton(
                         color: Colors.green,
-                        child: Text('Recargar', style: TextStyle(color: Colors.white)),
+                        child:const  Text('Recargar', style: TextStyle(color: Colors.white)),
                         onPressed: () {
                           Navigator.pushNamed(context, 'solicitarRecarga');
                         },
@@ -153,13 +157,13 @@ void showdialogEquipos(BuildContext context, Responsive responsive) async {
     context: context,
     builder: (_) {
       return AlertDialog(
-        shape: RoundedRectangleBorder(
+        shape:const RoundedRectangleBorder(
           borderRadius: BorderRadius.all(
             Radius.circular(10.0),
           ),
         ),
-        contentPadding: EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 0.0),
-        content: Container(
+        contentPadding:  const EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 0.0),
+        content: SizedBox(
           width: responsive.wp(90),
           height: responsive.hp(35),
           child: Padding(
@@ -167,14 +171,14 @@ void showdialogEquipos(BuildContext context, Responsive responsive) async {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Container(
+                SizedBox(
                   height: responsive.hp(8),
                   width: double.infinity,
                   child: SvgPicture.asset(
                     'assets/svg/check.svg',
                   ),
                 ),
-                Text(
+                const Text(
                   "Usted no tiene equipos registrados, por favor registre uno para continuar con la reserva",
                   style: TextStyle(
                     fontFamily: "OpenSans",
@@ -186,24 +190,24 @@ void showdialogEquipos(BuildContext context, Responsive responsive) async {
                 ),
                 Row(
                   children: [
-                    Container(
+                    SizedBox(
                       width: responsive.wp(33),
                       height: responsive.hp(5),
                       child: MaterialButton(
                         color: Colors.red,
-                        child: Text('Atras', style: TextStyle(color: Colors.white)),
+                        child:const Text('Atras', style: TextStyle(color: Colors.white)),
                         onPressed: () {
                           Navigator.pop(context);
                         },
                       ),
                     ),
-                    Spacer(),
-                    Container(
+                    const Spacer(),
+                    SizedBox(
                       width: responsive.wp(33),
                       height: responsive.hp(5),
                       child: MaterialButton(
                         color: Colors.green,
-                        child: Text('Crear Equipo', style: TextStyle(color: Colors.white)),
+                        child:const Text('Crear Equipo', style: TextStyle(color: Colors.white)),
                         onPressed: () {
                           Navigator.pushNamed(context, 'registroEquipos');
                         },
@@ -324,7 +328,7 @@ obtenerFecha(String date) {
 
   var fecha = DateTime.parse(date);
 
-  final DateFormat fech = new DateFormat('dd MMM yyyy', 'es');
+  final DateFormat fech =   DateFormat('dd MMM yyyy', 'es');
 
   return fech.format(fecha);
 }
@@ -336,7 +340,7 @@ obtenerFecha2(String date) {
 
   var fecha = DateTime.parse(date);
 
-  final DateFormat fech = new DateFormat('dd / MM / yyyy', 'es');
+  final DateFormat fech =   DateFormat('dd / MM / yyyy', 'es');
 
   return fech.format(fecha);
 }
@@ -349,8 +353,8 @@ obtenerRangoFechaSemanal(String dateInicio, String dateFin) {
   var fecha1 = DateTime.parse(dateInicio);
   var fecha2 = DateTime.parse(dateFin);
 
-  final DateFormat dia = new DateFormat('dd', 'es');
-  final DateFormat mes = new DateFormat('MMMM', 'es');
+  final DateFormat dia =   DateFormat('dd', 'es');
+  final DateFormat mes =   DateFormat('MMMM', 'es');
   //final DateFormat year = new DateFormat('yyyy', 'es');
 
   var mes1 = mes.format(fecha1);
@@ -383,7 +387,7 @@ obtenerDiaMes(String date) {
 
   var fecha = DateTime.parse(date);
 
-  final DateFormat fech = new DateFormat('dd MMM', 'es');
+  final DateFormat fech =   DateFormat('dd MMM', 'es');
 
   return fech.format(fecha);
 }
@@ -395,7 +399,7 @@ obtenerFechaReservas(String date) {
 
   var fecha = DateTime.parse(date);
 
-  final DateFormat fech = new DateFormat('yyyy-MM-dd', 'es');
+  final DateFormat fech =   DateFormat('yyyy-MM-dd', 'es');
 
   return fech.format(fecha);
 }
@@ -442,7 +446,7 @@ obtenerEmail(String email) {
 obtenerPrimerNombre(String nombre) {
   if (nombre != '') {
     var separarNombre = nombre.split(' ');
-    return '${separarNombre[0]}';
+    return separarNombre[0];
   } else {
     return '';
   }
@@ -453,8 +457,8 @@ Widget closeNode(FocusNode node) {
     onTap: () => node.unfocus(),
     child: Container(
       color: Colors.white,
-      padding: EdgeInsets.all(8.0),
-      child: Text(
+      padding: const EdgeInsets.all(8.0),
+      child: const Text(
         "Cerrar",
       ),
     ),

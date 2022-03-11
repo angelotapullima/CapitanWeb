@@ -63,7 +63,7 @@ class SideMenuItem extends StatelessWidget {
                   horizontal: ScreenUtil().setWidth(5),
                 ),
                 margin: EdgeInsets.symmetric(
-                  horizontal: ScreenUtil().setWidth(30),
+                  horizontal: ScreenUtil().setWidth(10),
                 ),
                 decoration: BoxDecoration(
                   color: expanded ? kcolorContainerSelected : ktransparent,
